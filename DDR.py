@@ -4,7 +4,17 @@ import random
 import time
 from time import sleep
 
-
+def main():
+  # print('First line', end='\r')
+  # print('Second line', end='\r')
+  beatmapsets = beatmap()
+  for beatmapset in beatmapsets:
+    print(beatmapset, end='\r')
+    time.sleep(0.5)
+  #print('< ^ v >', end='\r')
+  #print('< ^ v  ', end='\r')
+  #print('foo')
+  #sleep(1)
 
 def beats():
   list = [random.randint(0,1), random.randint(0,1), random.randint(0,1), random.randint(0,1)]
@@ -15,19 +25,18 @@ def beats():
     while (list[change] != 1):
       change += 1
     list[change] = 0
+  return list
+
+def beatmap():
+  beatmap = []
+  for x in range(0,32):
+    beatmap.append([0,0,0,0])
+  for x in range(0,10):
+    beatmap.append(beats())
+  return beatmap
 
 
-for x in range(0,10):
-    = beats()
-
-
-if __name__ == '__main__':
-        # print('First line', end='\r')
-        # print('Second line', end='\r')
-        print('< ^ v >', end='\r')
-        print('< ^ v  ', end='\r')
-        print('foo')
-        sleep(1)
+main()
 
 # tk = Tk()
 # tk.title("DDR Game")
