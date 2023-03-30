@@ -18,27 +18,28 @@ def beats():
   return list
 
 def beatmap():
-  beatmap = []
+  bm = []
   #temporarily commenting out the empties
   for x in range(0,4):
-    beatmap.append([0,0,0,0])
+    bm.append([0,0,0,0])
   for x in range(0,10):
-    beatmap.append(beats())
+    bm.append(beats())
+  bm.reverse()
+  beatmap = []
+  for x in bm:
+    row = " ".join(map(str, x))
+    #joins into list
+    beatmap.append(row)
+  #up till now, the entire beatmap is now a list of strings
   return beatmap
 
 def main(stdscr):
   bm = beatmap()
-  bm.reverse()
   #disables blinking cursor
   curses.curs_set(0)
-  rows = []
-  for x in bm:
-    row = " ".join(map(str, x))
-    #joins into list
-    rows.append(row)
-  #reverse direction to print in
-  for i in range(len(rows)-10, -1, -1):
-    stdscr.addstr(0,0,"\n".join(rows[i:i+10]))
+  #reverse direction to print in    
+  for i in range(len(bm)-10, -1, -1):
+    stdscr.addstr(0,0,"\n".join(bm[i:i+10]))
     #stdscr.addstr(0,0,"foo\nbar")
     #print(x, end='\r')
     time.sleep(1)
