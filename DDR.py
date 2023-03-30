@@ -34,23 +34,20 @@ def main(stdscr):
   rows = []
   for x in bm:
     row = " ".join(map(str, x))
+    #joins into list
     rows.append(row)
-    #print(row)
-    #print("foo")
-    y = 0
-    while y<len(rows):
-      if y % 10 == 9: 
-        print (rows[y])
-      y+=1
-    #stdscr.addstr(0,0,row)
-    #stdscr.refresh()
+  #reverse direction to print in
+  for i in range(len(rows)-10, -1, -1):
+    stdscr.addstr(0,0,"\n".join(rows[i:i+10]))
+    #stdscr.addstr(0,0,"foo\nbar")
     #print(x, end='\r')
-    #time.sleep(1)
+    time.sleep(1)
+    stdscr.refresh()
 
 wrapper(main)
 
-#stdscr = curses.initscr()
-#main(stdscr)
+stdscr = curses.initscr()
+main(stdscr)
 
 # tk = Tk()
 # tk.title("DDR Game")
