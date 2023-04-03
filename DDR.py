@@ -1,5 +1,5 @@
-# import keyboard
-# from tkinter import *
+import keyboard
+#from tkinter import *
 import curses
 from curses import wrapper
 import random
@@ -37,13 +37,26 @@ def main(stdscr):
   bm = beatmap()
   #disables blinking cursor
   curses.curs_set(0)
-  #reverse direction to print in    
+  #reverse direction to print in
   for i in range(len(bm)-10, -1, -1):
     stdscr.addstr(0,0,"\n".join(bm[i:i+10]))
     #stdscr.addstr(0,0,"foo\nbar")
     #print(x, end='\r')
     time.sleep(1)
     stdscr.refresh()
+
+  #detecting keypresses
+  while True:
+    if keyboard.is_pressed("left"):
+      print ('You pressed the left arrow')
+    if keyboard.is_pressed("right"):
+      print ('You pressed the right arrow')
+    if keyboard.is_pressed("down"):
+      print ('You pressed the down arrow')
+    if keyboard.is_pressed("up"):
+      print ('You pressed the up arrow')
+    if keyboard.is_pressed("m"):
+      break
 
 wrapper(main)
 
