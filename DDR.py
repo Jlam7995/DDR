@@ -40,23 +40,25 @@ def main(stdscr):
   #reverse direction to print in
   for i in range(len(bm)-10, -1, -1):
     stdscr.addstr(0,0,"\n".join(bm[i:i+10]))
-    #stdscr.addstr(0,0,"foo\nbar")
-    #print(x, end='\r')
-    time.sleep(1)
+    #delays output rather than sleeps
+    curses.delay_output(600)
+    stdscr.refresh()
+  #stdscr keypress doesn't detect more than one yet
+  while True:
+    key_pressed = stdscr.getkey()
+    #stdscr.addstr(20,0,key_pressed)
+    if key_pressed == "KEY_LEFT":
+      stdscr.addstr(20,0,"<")
+    if key_pressed == "KEY_RIGHT":
+      stdscr.addstr(20,2,">")
+    if key_pressed == "KEY_DOWN":
+      stdscr.addstr(20,4,"v")
+    if key_pressed == "KEY_UP":
+      stdscr.addstr(20,6,"^")
+    if key_pressed == "m":
+      break
     stdscr.refresh()
 
-  #detecting keypresses
-  while True:
-    if keyboard.is_pressed("left"):
-      print ('You pressed the left arrow')
-    if keyboard.is_pressed("right"):
-      print ('You pressed the right arrow')
-    if keyboard.is_pressed("down"):
-      print ('You pressed the down arrow')
-    if keyboard.is_pressed("up"):
-      print ('You pressed the up arrow')
-    if keyboard.is_pressed("m"):
-      break
 
 wrapper(main)
 
