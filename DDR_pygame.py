@@ -16,11 +16,11 @@ def beats():
 
 def beatmap():
   beatmap = []
-  for x in range(0,4):
+  for x in range(0,23):
     beatmap.append([0,0,0,0])
-  for x in range(0,6):
+  for x in range(0,432):
     beatmap.append(beats())
-  for x in range(0,10):
+  for x in range(0,4):
     beatmap.append([0,0,0,0])
   beatmap.reverse()
   return beatmap
@@ -67,6 +67,7 @@ dt = 0
 #displaying them as sprites
 #and figure out if pygame can detect multiple inputs at the same time
 
+pygame.mixer.music.load("Love_Story_8Bit.mp3")
 bm = beatmap()
 x = True
 running = True
@@ -76,13 +77,8 @@ while running or x == False:
       if event.type == pygame.QUIT:
           running = False
   
-  interval = 1
+  interval = .5
   score = 0
-  #printed a sprite
-  red = pygame.image.load("images/red.png")
-  red = pygame.transform.scale(red, (25, 25))
-  green = pygame.image.load("images/green.png")
-  green = pygame.transform.scale(green, (25, 25))
   n = len(bm)-1
   #for setup as global variable
   check = [0, 0, 0, 0]
@@ -99,6 +95,7 @@ while running or x == False:
     if event.type == pygame.KEYDOWN:
       if event.key == pygame.K_RETURN:
         screen.fill((0,0,0))
+        pygame.mixer.music.play()
         #HM idk why it's 8, but it works lol
         while n > 8 or x == False:
           restart = myfont.render("To restart the game, press r", 1, blue)
@@ -107,16 +104,12 @@ while running or x == False:
             if event.type == pygame.KEYDOWN:
               if event.key == pygame.K_LEFT:
                 check[0] = 1
-                print("pressed left")
               elif event.key == pygame.K_DOWN:
                 check[1] = 1
-                print("pressed down")
               elif event.key == pygame.K_UP:
                 check[2] = 1
-                print("pressed up")
               elif event.key == pygame.K_RIGHT:
                 check[3] = 1
-                print("pressed right")
               if event.key == pygame.K_r:
                 score = 0
                 screen.fill((0,0,0))
@@ -160,7 +153,6 @@ while running or x == False:
   #need to get rid of all the if breaks, there's too many
   #maybe put everything in a function so i can return instead
   #made arrows into arrows. Have placeholder. Does not look ideal but works
-  #have to add music
   #maybe handmake beatmap
   
   #screen.blit(arrows, (0, 0))
