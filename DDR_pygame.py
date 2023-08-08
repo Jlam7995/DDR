@@ -25,6 +25,34 @@ def beatmap():
   beatmap.reverse()
   return beatmap
 
+def printsprite(i, j):
+  blank = pygame.image.load("images/blank.png").convert_alpha()
+  blank = pygame.transform.scale(blank, (25, 25))
+  hold = pygame.image.load("images/arrow-emptier.png")
+  hold = pygame.transform.scale(hold, (115, 25))
+  left = pygame.image.load("images/arrow-left.png").convert_alpha()
+  left = pygame.transform.scale(left, (25, 25))
+  up = pygame.image.load("images/arrow-up.png").convert_alpha()
+  up = pygame.transform.scale(up, (25, 25))
+  down = pygame.image.load("images/arrow-down.png").convert_alpha()
+  down = pygame.transform.scale(down, (25, 25))
+  right = pygame.image.load("images/arrow-right.png").convert_alpha()
+  right = pygame.transform.scale(right, (25, 25))
+  screen.blit(hold, (0, 400))
+  pygame.display.flip()
+  if bm[i][j] == 1:
+    if j == 0:
+      screen.blit(left, ((j * 30), 400 + (i - n) * 30))
+    elif j == 1:
+      screen.blit(down, ((j * 30), 400 + (i - n) * 30))
+    elif j == 2:
+      screen.blit(up, ((j * 30), 400 + (i - n) * 30))
+    elif j == 3:
+      screen.blit(right, ((j * 30), 400 + (i - n) * 30))
+  else:
+    #print("red")
+    screen.blit(blank, ((j * 30), 400 + (i - n) * 30))
+
 pygame.init()
 screen = pygame.display.set_mode((720, 480))
 #implicitly creates surface to blit to
@@ -77,15 +105,15 @@ while running or x == False:
           screen.blit(restart, (500, 400))
           for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-              if event.key == pygame.K_UP:
-                check[2] = 1
-                print("pressed up")
+              if event.key == pygame.K_LEFT:
+                check[0] = 1
+                print("pressed left")
               elif event.key == pygame.K_DOWN:
                 check[1] = 1
                 print("pressed down")
-              elif event.key == pygame.K_LEFT:
-                check[0] = 1
-                print("pressed left")
+              elif event.key == pygame.K_UP:
+                check[2] = 1
+                print("pressed up")
               elif event.key == pygame.K_RIGHT:
                 check[3] = 1
                 print("pressed right")
@@ -114,18 +142,12 @@ while running or x == False:
             #print (time.time()-start)
             for i in range(n, n-10, -1):
               for j in range (4):
-                #print ("bm[",i,"][",j,"]: ",bm[i][j])
-                if bm[i][j] == 1:
-                  #print("green")
-                  screen.blit(green, ((j * 40), 400 + (i - n) * 30))
-                else:
-                  #print("red")
-                  screen.blit(red, ((j * 40), 400 + (i - n) * 30))
-              #print("N: ", n)
+                printsprite(i,j)
               pygame.display.flip()
             start = time.time()
             #to clear value for checking score
             check = [0, 0, 0, 0] 
+            screen.fill((0,0,0))
         if n == 8:
           #running = False
           begin = False
@@ -137,9 +159,9 @@ while running or x == False:
   
   #need to get rid of all the if breaks, there's too many
   #maybe put everything in a function so i can return instead
-  
-  #make arrows into arrows
-  #arrows = pygame.image.load("images/arrows.jpg")
+  #made arrows into arrows. Have placeholder. Does not look ideal but works
+  #have to add music
+  #maybe handmake beatmap
   
   #screen.blit(arrows, (0, 0))
   #pygame.display.flip()
