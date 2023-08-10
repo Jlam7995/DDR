@@ -4,6 +4,7 @@
 
 ## What is this project?
 This is my CS50 Final project. The requirements were: "So long as your project draws upon this course’s lessons, the nature of your project is entirely up to you. You may implement your project in any language(s). You are welcome to utilize infrastructure other than the CS50 Codespace. All that we ask is that you build something of interest to you, that you solve an actual problem, that you impact your community, or that you change the world. Strive to create something that outlives this course."
+
 I previously made DDR (with a friend) during my digital logic design (DLD) project during my first year of college. We made it with breadboards, the music part of a pop-up card, and an LED panel (soldered from lights and a panel). DLD was the first class to spark my interest in coding.
 
 ## How to run the game?
