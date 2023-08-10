@@ -11,7 +11,7 @@ I previously made DDR (with a friend) during my digital logic design (DLD) proje
 ### Using python
 1. Install project dependencies by running pip install -r requirements.txt
 2. Run the python program with command 'python DDR_pygame.py'.
-3. Press the 'enter' key to start the game
+3. Press the 'e' key for easy mode or the 'h' key for hard mode
 4. Press the 'r' key to stop at any time
 
 ## How to play?
