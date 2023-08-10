@@ -57,15 +57,7 @@ pygame.init()
 screen = pygame.display.set_mode((720, 480))
 #implicitly creates surface to blit to
 pygame.display.set_caption('DDR')
-clock = pygame.time.Clock()
 running = True
-dt = 0
-
-#player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-
-#trying to display arrows based on whether it is a 0 or 1 in the beatmap
-#displaying them as sprites
-#and figure out if pygame can detect multiple inputs at the same time
 
 pygame.mixer.music.load("Love_Story_8Bit.mp3")
 bm = beatmap()
@@ -115,6 +107,7 @@ while running or x == False:
                 screen.fill((0,0,0))
                 n = len(bm) -1
                 x = False
+                pygame.mixer.music.stop()
                 break
                 #breaks me out of if2
             if x == False:
@@ -153,14 +146,10 @@ while running or x == False:
   #need to get rid of all the if breaks, there's too many
   #maybe put everything in a function so i can return instead
   #made arrows into arrows. Have placeholder. Does not look ideal but works
+
+  #extra credit
   #maybe handmake beatmap
-  
-  #screen.blit(arrows, (0, 0))
-  #pygame.display.flip()
-
-  #pygame.draw.circle(screen, "red", player_pos, 40)
-  #pygame.draw.polygon(screen, "red", ((0, 50), (0, 100), (100, 100), (100, 150), (150, 75), (100, 0), (100, 50)))
-
+  #maybe save high scores - local
 
 pygame.quit()
 quit()
