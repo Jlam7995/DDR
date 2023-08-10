@@ -1,6 +1,6 @@
 # CS50 Final Project: Dance Dance Revolution (DDR)
-## Video Demo: 
-## Dependencies: pygame, random, time, python3
+### Video Demo: 
+### Dependencies: pygame, random, time, python3
 
 ## What is this project?
 This is my CS50 Final project. The requirements were: "So long as your project draws upon this course’s lessons, the nature of your project is entirely up to you. You may implement your project in any language(s). You are welcome to utilize infrastructure other than the CS50 Codespace. All that we ask is that you build something of interest to you, that you solve an actual problem, that you impact your community, or that you change the world. Strive to create something that outlives this course."
